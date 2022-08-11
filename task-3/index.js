@@ -66,7 +66,7 @@ while (finishGame) {
         }
       }
       console.log(
-        `Совпавших цифр не на своих местах — ${digitsOutPlace.length} (${digitsOutPlace}), цифр на своих местах — ${digitsInPlace.length} (${digitsInPlace})`
+        `Matching numbers are out of place — ${digitsOutPlace.length} (${digitsOutPlace}), the numbers are in their places — ${digitsInPlace.length} (${digitsInPlace})`
       );
     }
   }
