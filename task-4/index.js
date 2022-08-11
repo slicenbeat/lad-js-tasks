@@ -89,9 +89,11 @@ while (finishGame) {
   player.maxHealth = 20 - 4 * levelCoefficient; // исходное здоровье пользователя
 
   initializeTheGame([monster, player]);
-
+  let numberOfMove = 0;
   //игра
   while (winGameFlag) {
+    numberOfMove += 1;
+    console.log(`====== Number of move — ${numberOfMove} ======`);
     let monsterNumberOfMove = getNumberOfMove(monster);
     let playerNumberOfMove = getNumberOfMove(player);
     reduceTheNumberOfCooldown([monster, player]);
@@ -134,7 +136,9 @@ function getNumberOfMove(player) {
     while (generatingNumberOfMoveFlag) {
       numberOfMove = Math.floor(Math.random() * player.moves.length); //генерация номера хода
       if (player.moves[numberOfMove].currentCooldown === 0) {
-        console.log(`Monster selected "${player.moves[numberOfMove].name}"`);
+        console.log(
+          `${player.name} selected "${player.moves[numberOfMove].name}"`
+        );
         return numberOfMove;
       }
     }
@@ -148,7 +152,9 @@ function getNumberOfMove(player) {
       if (numberOfMove == -1) {
         console.log("No, no, it would be necessary to decide on the move!");
       } else if (player.moves[numberOfMove].currentCooldown === 0) {
-        console.log(`Player selected "${player.moves[numberOfMove].name}"`);
+        console.log(
+          `${player.name} selected "${player.moves[numberOfMove].name}"`
+        );
         return numberOfMove;
       } else {
         console.log("Cooldown weighs on this move, try to choose another one…");
